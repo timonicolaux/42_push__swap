@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:41:03 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 13:28:40 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:58:29 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	find_min(t_list **lst)
 {
-	int	i;
+	int		i;
 	t_list	*lst_copy;
 
 	lst_copy = *lst;
@@ -30,7 +30,7 @@ int	find_min(t_list **lst)
 
 int	find_max(t_list **lst)
 {
-	int	i;
+	int		i;
 	t_list	*lst_copy;
 
 	lst_copy = *lst;

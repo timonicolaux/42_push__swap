@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:26:21 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 13:27:54 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:16:40 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,11 @@ int	push_swap(char **str, int i)
 int	error_check(char **str, int i)
 {
 	int	j;
-	int	k;
 
-	k = 0;
 	while (str[i])
 	{
-		while (str[i][k])
-		{
-			if (!ft_isdigit(str[i][k]) && (str[i][k] != '-') && (str[i][k] != '+'))
-				return (1);
-			k++;
-		}
-		k = 0;
+		if (is_digit_check(str[i]))
+			return (1);
 		if (ft_atoi(str[i]) >= 2147483647 || ft_atoi(str[i]) <= -2147483648)
 			return (1);
 		j = i + 1;
@@ -58,6 +51,25 @@ int	error_check(char **str, int i)
 			if (ft_atoi(str[j]) == ft_atoi(str[i]))
 				return (1);
 			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	is_digit_check(char	*str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
+			return (1);
+		if ((str[i] == '-' || str[i] == '+') && str[i + 1])
+		{
+			if (!ft_isdigit(str[i + 1]))
+				return (1);
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:17:08 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 13:39:53 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:02:29 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	find_closest_in_list(int num, t_list **lst)
 {
-	int	i;
-	int	temp;
-	int	index;
+	int		i;
+	int		temp;
+	int		index;
 	t_list	*lst_copy;
 
 	i = 0;
@@ -38,9 +38,9 @@ int	find_closest_in_list(int num, t_list **lst)
 
 int	find_closest_in_list2(int num, t_list **lst)
 {
-	int	i;
-	int	temp;
-	int	index;
+	int		i;
+	int		temp;
+	int		index;
 	t_list	*lst_copy;
 
 	i = 0;

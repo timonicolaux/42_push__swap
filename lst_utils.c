@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:41:35 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/09 14:37:32 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:58:18 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_list	*lst_last(t_list **lst)
 
 int	lst_length(t_list **lst)
 {
-	int	i;
+	int		i;
 	t_list	*lst_copy;
 
 	if (!lst)

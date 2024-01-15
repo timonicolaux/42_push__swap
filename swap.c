@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:18:09 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 11:52:26 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:01:03 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,3 @@ void	do_ss(t_list **a_stack, t_list **b_stack)
 	swap(b_stack);
 	ft_printf("ss\n");
 }
-

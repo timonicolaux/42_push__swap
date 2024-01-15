@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:28:13 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 10:25:45 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:01:46 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	calculate_cost(int number, t_list **b_lst, int index, t_list **a_lst)
 
 	length = lst_length(a_lst);
 	cost = 0;
-
 	if (index < (length / 2))
 		cost = check_first_half(number, b_lst, index, a_lst);
 	else

@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 09:24:44 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 10:25:19 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:01:56 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	first_move(t_list **a_lst, t_list **b_lst)
 void	turk_algo_b(t_list **a_lst, t_list **b_lst)
 {
 	t_list	*a_copy;
-	int	cost;
-	int	index;
-	int	i;
+	int		cost;
+	int		index;
+	int		i;
 
 	i = 0;
 	a_copy = *a_lst;
