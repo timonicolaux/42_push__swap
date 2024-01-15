@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:17:08 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 10:24:19 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:39:53 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,39 +94,4 @@ int	check_double_move(int a_index, int b_index, t_list **a_lst, t_list **b_lst)
 	else
 		result = b_moves;
 	return (result);
-}
-
-void	print_result(t_list **a_lst, t_list **b_lst)
-{
-	int	i;
-	t_list *a_lst_cpy;
-	t_list *b_lst_cpy;
-
-	i = 0;
-	printf("\n");
-	if (*a_lst)
-	{
-		a_lst_cpy = *a_lst;
-		while (i < lst_length(a_lst))
-		{
-			printf("%d\n", a_lst_cpy->number);
-			a_lst_cpy = a_lst_cpy->next;
-			i++;
-		}
-		i = 0;
-	}
-	printf("-\n");
-	printf("a\n\n");
-	if (*b_lst)
-	{
-		b_lst_cpy = *b_lst;
-		while (i < lst_length(b_lst))
-		{
-			printf("%d\n", b_lst_cpy->number);
-			b_lst_cpy = b_lst_cpy->next;
-			i++;
-		}
-	}
-	printf("-\n");
-	printf("b\n\n");
 }

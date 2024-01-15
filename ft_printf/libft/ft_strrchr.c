@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 12:23:03 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 11:15:41 by tnicolau         ###   ########.fr       */
+/*   Created: 2023/11/07 14:43:25 by tnicolau          #+#    #+#             */
+/*   Updated: 2023/11/14 13:44:16 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_list **a_list, t_list **b_list)
+char	*ft_strrchr(const char *s, int c)
 {
-	t_list	*temp;
+	int		i;
+	char	*str;
+	char	car;
 
-	if (!b_list)
-		return ;
-	temp = (*b_list)->next;
-	ft_lstadd_front(a_list, *b_list);
-	*b_list = temp;
-	if (*b_list)
-		(*b_list)->previous = NULL;
+	str = (char *)s;
+	car = (char)c;
+	i = ft_strlen(str);
+	while (str[i] != car && i > 0)
+		i--;
+	if (str[i] == car)
+		return (&str[i]);
+	else
+		return (0);
 }
 
-void	do_pa(t_list **a_list, t_list **b_list)
-{
-	push(a_list, b_list);
-	ft_printf("pa\n");
-}
-
-void	do_pb(t_list **a_list, t_list **b_list)
-{
-	push(b_list, a_list);
-	ft_printf("pb\n");
-}
+// int main()
+// {
+//     const char  str[] = "saucissie";
+//     int car = 'i';
+//     printf("%s\n", ft_strrchr(str, car));
+// }

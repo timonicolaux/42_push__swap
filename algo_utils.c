@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 08:49:13 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 10:35:58 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:57:45 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 void	push_to_b(t_list **a_lst, t_list **b_lst, int index, int length)
 {
-	int	i;
-	int	a_num;
 	t_list	*a_copy;
 
-	i = 0;
-	a_num = 0;
 	a_copy = *a_lst;
+	a_copy = a_copy->next;
 	if (index < (length / 2))
 		first_a_half(a_lst, b_lst, index);
 	else
@@ -34,12 +31,10 @@ void	push_to_b(t_list **a_lst, t_list **b_lst, int index, int length)
 
 void	first_a_half(t_list **a_lst, t_list **b_lst, int index)
 {
-	int	i;
 	int	a_num;
 	int	b_index;
 	int	double_moves;
 
-	i = 0;
 	a_num = find_num_with_index(a_lst, index);
 	b_index = find_closest_in_list(a_num, b_lst);
 	double_moves = check_double_move(index, b_index, a_lst, b_lst);
@@ -60,12 +55,10 @@ void	first_a_half(t_list **a_lst, t_list **b_lst, int index)
 
 void	second_a_half(t_list **a_lst, t_list **b_lst, int index, int length)
 {
-	int	i;
 	int	a_num;
 	int	b_index;
 	int	double_moves;
 
-	i = 0;
 	a_num = find_num_with_index(a_lst, index);
 	b_index = find_closest_in_list(a_num, b_lst);
 	double_moves = check_double_move(index, b_index, a_lst, b_lst);

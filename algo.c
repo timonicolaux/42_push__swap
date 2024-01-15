@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:38:31 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 10:19:55 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:58:06 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	algo(t_list **a_lst, t_list **b_lst)
 {
 	int	length;
-	int	i;
 
 	length = lst_length(a_lst);
-	i = 0;
 	if (length == 2)
 	{
 		if ((*a_lst)->number > (*a_lst)->next->number)

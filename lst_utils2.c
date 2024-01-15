@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:41:03 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 10:24:00 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:28:40 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,18 @@ int	find_index_with_num(t_list **lst, int num)
 		i++;
 	}
 	return (i);
+}
+
+int	is_sorted(t_list **lst)
+{
+	t_list	*lst_copy;
+
+	lst_copy = *lst;
+	while (lst_copy->next)
+	{
+		if (lst_copy->next->number < lst_copy->number)
+			return (0);
+		lst_copy = lst_copy->next;
+	}
+	return (1);
 }

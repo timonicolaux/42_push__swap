@@ -6,13 +6,13 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:21:24 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/04 13:59:41 by tnicolau         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:53:33 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	ft_atoi(char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int				i;
 	int				sign;
@@ -40,3 +40,13 @@ int	ft_atoi(char *nptr)
 	}
 	return ((int)result);
 }
+
+// int	main()
+// {
+// 	const char	str[] = "   5555551554154154154151245";
+// 	// const char	str[] = "-52";
+// 	// const char	str[] = "52";
+// 	// const char	str[] = "-2147483648";
+// 	printf("my atoi : %d\n", ft_atoi(str));
+// 	printf("atoi :    %d\n", atoi(str));
+// }

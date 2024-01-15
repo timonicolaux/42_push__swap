@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 12:23:03 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 11:15:41 by tnicolau         ###   ########.fr       */
+/*   Created: 2023/11/07 12:27:39 by tnicolau          #+#    #+#             */
+/*   Updated: 2023/11/10 10:50:13 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_list **a_list, t_list **b_list)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_list	*temp;
+	size_t	i;
+	size_t	srcsize;
 
-	if (!b_list)
-		return ;
-	temp = (*b_list)->next;
-	ft_lstadd_front(a_list, *b_list);
-	*b_list = temp;
-	if (*b_list)
-		(*b_list)->previous = NULL;
+	i = 0;
+	srcsize = ft_strlen(src);
+	if (size > 0)
+	{
+		while (src[i] && i < (size - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (srcsize);
 }
 
-void	do_pa(t_list **a_list, t_list **b_list)
-{
-	push(a_list, b_list);
-	ft_printf("pa\n");
-}
+// int main()
+// {
+//     char    dst[] = "coucou";
+//     const char    src[] = "coucou";
 
-void	do_pb(t_list **a_list, t_list **b_list)
-{
-	push(b_list, a_list);
-	ft_printf("pb\n");
-}
+//     printf("%d\n", ft_strlcpy(dst, src, 3));
+// }

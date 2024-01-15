@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:27:58 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 10:36:42 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:23:11 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include "ft_printf/ft_printf.h"
 
 typedef struct s_list
 {
@@ -26,11 +27,8 @@ typedef struct s_list
 
 void	print_result(t_list **a_lst, t_list **b_lst);
 
-int		ft_atoi(char *nptr);
-char	**ft_split(char *s, char c);
-size_t	ft_strlen(char *str);
-
 int		push_swap(char **str, int i);
+int		error_check(char **str, int i);
 void	algo(t_list **a_lst, t_list **b_lst);
 void	three_numbers(t_list **lst);
 void	four_numbers(t_list **a_lst, t_list **b_lst);
@@ -56,14 +54,15 @@ void	ft_lstadd_back(t_list **lst, t_list *first);
 t_list	*lst_last(t_list **lst);
 int		lst_length(t_list **lst);
 
-int	find_min(t_list **lst);
-int	find_max(t_list **lst);
-int	find_num_with_index(t_list **lst, int index);
-int	find_index_with_num(t_list **lst, int num);
-int	find_closest_in_list(int num, t_list **lst);
-int	find_closest_in_list2(int num, t_list **lst);
-int	reorder_list_cost(t_list **lst);
-int	check_double_move(int a_index, int b_index, t_list **a_lst, t_list **b_lst);
+int		find_min(t_list **lst);
+int		find_max(t_list **lst);
+int		find_num_with_index(t_list **lst, int index);
+int		find_index_with_num(t_list **lst, int num);
+int		is_sorted(t_list **lst);
+int		find_closest_in_list(int num, t_list **lst);
+int		find_closest_in_list2(int num, t_list **lst);
+int		reorder_list_cost(t_list **lst);
+int		check_double_move(int a_index, int b_index, t_list **a_lst, t_list **b_lst);
 
 void	swap(t_list **first);
 void	do_sa(t_list **lst);

@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 12:23:03 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 11:15:41 by tnicolau         ###   ########.fr       */
+/*   Created: 2023/11/08 14:48:39 by tnicolau          #+#    #+#             */
+/*   Updated: 2023/11/16 12:17:28 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_list **a_list, t_list **b_list)
+char	*ft_strdup(const char *s)
 {
-	t_list	*temp;
+	char	*str;
+	int		i;
+	int		size;
 
-	if (!b_list)
-		return ;
-	temp = (*b_list)->next;
-	ft_lstadd_front(a_list, *b_list);
-	*b_list = temp;
-	if (*b_list)
-		(*b_list)->previous = NULL;
+	size = ft_strlen(s);
+	i = 0;
+	str = malloc(sizeof(char) * (size + 1));
+	if (!str)
+		return (NULL);
+	while (i < (size + 1))
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
-void	do_pa(t_list **a_list, t_list **b_list)
-{
-	push(a_list, b_list);
-	ft_printf("pa\n");
-}
-
-void	do_pb(t_list **a_list, t_list **b_list)
-{
-	push(b_list, a_list);
-	ft_printf("pb\n");
-}
+// int	main()
+// {
+// 	printf("%s\n", ft_strdup("bonjour"));
+// }

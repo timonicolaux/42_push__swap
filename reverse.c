@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timonicolaux <timonicolaux@student.42.f    +#+  +:+       +#+        */
+/*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:00:34 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/14 11:27:25 by timonicolau      ###   ########.fr       */
+/*   Updated: 2024/01/15 11:03:31 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ void	reverse(t_list **lst)
 void	do_rra(t_list **lst)
 {
 	reverse(lst);
-	printf("rra\n");
+	ft_printf("rra\n");
 }
 
 void	do_rrb(t_list **lst)
 {
 	reverse(lst);
-	printf("rrb\n");
+	ft_printf("rrb\n");
 }
 
 void	do_rrr(t_list **a_list, t_list **b_list)
 {
 	reverse(a_list);
 	reverse(b_list);
-	printf("rrr\n");
+	ft_printf("rrr\n");
 }
