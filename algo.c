@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:38:31 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/05 13:44:08 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:19:55 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,21 @@
 void	algo(t_list **a_lst, t_list **b_lst)
 {
 	int	length;
+	int	i;
 
 	length = lst_length(a_lst);
+	i = 0;
 	if (length == 2)
 	{
 		if ((*a_lst)->number > (*a_lst)->next->number)
 			do_sa(a_lst);
 	}
-	if (length == 3)
+	else if (length == 3)
 		three_numbers(a_lst);
-	else if (length == 4 || length == 5)
-		four_five_numbers(a_lst, b_lst, length);
-	// while (length)
-	// {
-	// 	printf("%d\n", (*lst)->number);
-	// 	*lst = (*lst)->next;
-	// 	length--;
-	// }
-	// printf("%d\n", (*lst)->number);
-	// printf("%d\n", (*lst)->next->number);
-	// printf("%d\n", (*lst)->next->next->number);
+	else if (length == 4)
+		four_numbers(a_lst, b_lst);
+	else
+		turk_algo(a_lst, b_lst);
 }
 
 void	three_numbers(t_list **lst)
@@ -57,31 +52,20 @@ void	three_numbers(t_list **lst)
 		do_rra(lst);
 }
 
-void	four_five_numbers(t_list **a_lst, t_list **b_lst, int length)
+void	four_numbers(t_list **a_lst, t_list **b_lst)
 {
-	int	length_copy;
-
-	length_copy = length;
-	while (length != 3)
-	{
-		do_pb(a_lst, b_lst);
-		length--;
-	}
+	do_pb(a_lst, b_lst);
 	three_numbers(a_lst);
-	while (length_copy != 3)
+	do_pa(a_lst, b_lst);
+	if ((*a_lst)->number > lst_last(a_lst)->number)
+		do_ra(a_lst);
+	else if (((*a_lst)->number < lst_last(a_lst)->number) && ((*a_lst)->number > lst_last(a_lst)->previous->number))
 	{
-		do_pa(a_lst, b_lst);
-		if ((*a_lst)->number > lst_last(a_lst)->number)
-			do_ra(a_lst);
-		else if (((*a_lst)->number < lst_last(a_lst)->number) && ((*a_lst)->number > lst_last(a_lst)->previous->number))
-		{
-			do_rra(a_lst);
-			do_sa(a_lst);
-			do_ra(a_lst);
-			do_ra(a_lst);
-		}
-		else if ((*a_lst)->number > (*a_lst)->next->number)
-			do_sa(a_lst);
-		length_copy--;
+		do_rra(a_lst);
+		do_sa(a_lst);
+		do_ra(a_lst);
+		do_ra(a_lst);
 	}
+	else if ((*a_lst)->number > (*a_lst)->next->number)
+		do_sa(a_lst);
 }

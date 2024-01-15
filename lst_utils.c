@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:41:35 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/05 13:27:15 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:37:32 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ t_list	*lst_last(t_list **lst)
 {
 	t_list	*lst_copy;
 
-	lst_copy = *lst;
 	if (!lst)
 		return (NULL);
+	lst_copy = *lst;
 	while (lst_copy->next)
 		lst_copy = lst_copy->next;
 	return (lst_copy);
@@ -81,6 +81,10 @@ int	lst_length(t_list **lst)
 	int	i;
 	t_list	*lst_copy;
 
+	if (!lst)
+		return (0);
+	else if (!(*lst)->next)
+		return (1);
 	i = 0;
 	lst_copy = *lst;
 	while (lst_copy)

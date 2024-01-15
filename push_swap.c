@@ -6,56 +6,75 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:26:21 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/05 10:51:51 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:36:44 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_swap(int ac, char **str, int i)
+int	push_swap(char **str, int i)
 {
 	int	start;
 	t_list	*a_lst;
 	t_list	*b_lst;
-	t_list	*add_lst;
+	int	j;
+	int	k;
 
+	a_lst = NULL;
+	b_lst = NULL;
 	start = i;
+	k = 0;
 	while (str[i])
 	{
-		if (i == start)
+		// while (str[i][k])
+		// {
+		// 	if ((str[i][k] < '0' && str[i][k] > '9') && (str[i][k] != '-'))
+		// 		return (1);
+		// 	k++;
+		// }
+		if (ft_atoi(str[i]) >= 2147483647 || ft_atoi(str[i]) <= -2147483648)
+			return (1);
+		j = i + 1;
+		while (str[j])
 		{
-			a_lst = ft_lstnew(ft_atoi(str[i]));
-		}
-		else
-		{
-			add_lst = ft_lstnew(ft_atoi(str[i]));
-			ft_lstadd_back(&a_lst, add_lst);
+			if (ft_atoi(str[j]) == ft_atoi(str[i]))
+				return (1);
+			j++;
 		}
 		i++;
 	}
-	algo(&a_lst, &b_lst);
 	i = start;
 	while (str[i])
 	{
-		printf("%d\n", a_lst->number);
-		a_lst = a_lst->next;
+		ft_lstadd_back(&a_lst, ft_lstnew(ft_atoi(str[i])));
 		i++;
 	}
-	return(0);
+	algo(&a_lst, &b_lst);
+	return (0);
 }
 
 int	main(int ac, char **av)
 {
 	char	**numbers;
+	int		check_error;
 
 	if (ac == 2)
 	{
 		numbers = ft_split(av[1], ' ');
-		push_swap(ac, numbers, 0);
+		// push_swap(ac, numbers, 0);
+		check_error = push_swap(numbers, 0);
+		if (check_error)
+			printf("Error\n");
+		free(numbers);
 	}
 	else if (ac > 2)
-		push_swap(ac, av, 1);
+	{
+		// push_swap(ac, av, 1);
+		check_error = push_swap(av, 1);
+		if (check_error)
+			printf("Error\n");
+	}
 	else
-		printf("Please enter some values\n");
+		printf("Error\n");
 	return (0);
 }

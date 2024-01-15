@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:27:58 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/05 11:11:20 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:36:42 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,46 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-int	ft_atoi(char *nptr);
+void	print_result(t_list **a_lst, t_list **b_lst);
+
+int		ft_atoi(char *nptr);
 char	**ft_split(char *s, char c);
 size_t	ft_strlen(char *str);
 
-int		push_swap(int ac, char **str, int i);
+int		push_swap(char **str, int i);
 void	algo(t_list **a_lst, t_list **b_lst);
 void	three_numbers(t_list **lst);
-void	four_five_numbers(t_list **a_lst, t_list **b_lst, int length);
+void	four_numbers(t_list **a_lst, t_list **b_lst);
+
+int		calculate_cost(int number, t_list **b_lst, int index, t_list **a_lst);
+int		check_first_half(int number, t_list **b_lst, int index, t_list **a_lst);
+int		check_second_half(int number, t_list **b_lst, int index, t_list **a_lst);
+
+void	turk_algo(t_list **a_lst, t_list **b_lst);
+void	first_move(t_list **a_lst, t_list **b_lst);
+void	turk_algo_b(t_list **a_lst, t_list **b_lst);
+void	turk_algo_a(t_list **a_lst, t_list **b_lst);
+
+void	push_to_b(t_list **a_lst, t_list **b_lst, int index, int length);
+void	first_a_half(t_list **a_lst, t_list **b_lst, int index);
+void	second_a_half(t_list **a_lst, t_list **b_lst, int index, int length);
+void	reorder_b_with_min(t_list **b_lst);
+void	reorder_b_with_else(t_list **a_lst, t_list **b_lst);
 
 t_list	*ft_lstnew(int	content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *first);
 t_list	*lst_last(t_list **lst);
 int		lst_length(t_list **lst);
+
+int	find_min(t_list **lst);
+int	find_max(t_list **lst);
+int	find_num_with_index(t_list **lst, int index);
+int	find_index_with_num(t_list **lst, int num);
+int	find_closest_in_list(int num, t_list **lst);
+int	find_closest_in_list2(int num, t_list **lst);
+int	reorder_list_cost(t_list **lst);
+int	check_double_move(int a_index, int b_index, t_list **a_lst, t_list **b_lst);
 
 void	swap(t_list **first);
 void	do_sa(t_list **lst);

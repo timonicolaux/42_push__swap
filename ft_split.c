@@ -5,135 +5,96 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 10:12:11 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/04 14:09:05 by tnicolau         ###   ########.fr       */
+/*   Created: 2024/01/10 11:12:26 by tnicolau           #+#    #+#             */
+/*   Updated: 2024/01/10 11:25:20 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**ft_freeall(char **array, int j)
+static int	char_is_separator(char c, char sep)
 {
 	int	i;
 
 	i = 0;
-	if (j == -1)
-	{
-		array = malloc(sizeof(char *) * 1);
-		if (!array)
-			return (NULL);
-		array[0] = NULL;
-		return (array);
-	}
-	while (i < j)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-	return (NULL);
+	if (c == sep || c == '\0')
+		return (1);
+	return (0);
 }
 
-int	array_size(char *s, char c)
+static int	count_words(char *str, char sep)
 {
 	int	i;
-	int	count;
-	int	length;
+	int	words;
 
+	words = 0;
 	i = 0;
-	count = 0;
-	length = ft_strlen(s);
-	while (s[i])
+	while (str[i] != '\0')
 	{
-		if (s[i] != c && i == 0)
-			count++;
-		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
-			count++;
+		if (char_is_separator(str[i + 1], sep) == 1
+				&& char_is_separator(str[i], sep) == 0)
+			words++;
 		i++;
 	}
-	if (count == length)
-		return (0);
-	if (count == 0)
-		count++;
-	return (count);
+	return (words);
 }
 
-int	calc_size(char *s, int start, char c, int mark)
+static void	write_word(char *dest, char *from, char sep)
 {
-	int	count;
+	int	i;
 
-	count = 0;
-	if (mark == 1)
+	i = 0;
+	while (char_is_separator(from[i], sep) == 0)
 	{
-		while (s[start] == c && s[start])
-			start++;
-		while (s[start] != c && s[start])
-		{
-			count++;
-			start++;
-		}
+		dest[i] = from[i];
+		i++;
 	}
-	else
-	{
-		while (s[start] != c && s[start])
-			start++;
-		while (s[start] == c && s[start])
-		{
-			count++;
-			start++;
-		}
-	}
-	return (count);
+	dest[i] = '\0';
 }
 
-char	*fill_word(char *individual_str, char *s, char c, int start)
+static void	*write_split(char **split, char *str, char sep)
 {
-	int	j;
-	int	wlength;
-	int	slength;
-
-	j = 0;
-	wlength = calc_size(s, start, c, 1);
-	slength = calc_size(s, start, c, 0);
-	individual_str = malloc(sizeof(char) * (wlength + 1));
-	if (!individual_str)
-		return (NULL);
-	while (s[start] == c && start < (start + wlength + slength))
-		start++;
-	while (s[start] && s[start] != c)
-	{
-		individual_str[j] = s[start];
-		j++;
-		start++;
-	}
-	individual_str[j] = '\0';
-	return (individual_str);
-}
-
-char	**ft_split(char *s, char c)
-{
+	int		i;
 	int		j;
-	int		index;
-	char	**array;
+	int		word;
 
-	array = NULL;
-	j = 0;
-	index = 0;
-	if (s == 0)
+	word = 0;
+	i = 0;
+	while (str[i] != '\0')
+		if (char_is_separator(str[i], sep) == 1)
+			i++;
+		else
+		{
+			j = 0;
+			while (char_is_separator(str[i + j], sep) == 0)
+				j++;
+			if ((split[word] = (char*)malloc(sizeof(char) * (j + 1))) == NULL)
+			{
+				while (word > 0)
+					free(split[--word]);
+				return (NULL);
+			}
+			write_word(split[word], str + i, sep);
+			i += j;
+			word++;
+		}
+	return ((void*)1);
+}
+
+char		**ft_split(char *s, char c)
+{
+	char	**res;
+	char	*str;
+	int		words;
+
+	if (s == NULL)
 		return (NULL);
-	if (calc_size(s, index, c, 0) == (int)ft_strlen(s))
-		return (ft_freeall(array, -1));
-	array = malloc(sizeof(char *) * (array_size(s, c) + 1));
-	if (!array)
+	str = (char*)s;
+	words = count_words(str, c);
+	if ((res = (char**)malloc(sizeof(char*) * (words + 1))) == NULL)
 		return (NULL);
-	while (j < array_size(s, c))
-	{
-		array[j] = fill_word(array[j], s, c, index);
-		if (array[j] == NULL)
-			return (ft_freeall(array, j));
-		index = index + calc_size(s, index, c, 1) + calc_size(s, index, c, 0);
-		j++;
-	}
-	array[j] = NULL;
-	return (array);
+	res[words] = 0;
+	if (write_split(res, str, c) == NULL)
+		return (NULL);
+	return (res);
 }
