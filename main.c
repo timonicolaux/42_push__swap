@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:26:21 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 14:16:40 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:00:01 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	push_swap(char **str, int i)
 		ft_printf("");
 	else
 		algo(&a_lst, &b_lst);
+	clear_lst(&a_lst);
+	clear_lst(&b_lst);
 	return (0);
 }
 
@@ -76,6 +78,20 @@ int	is_digit_check(char	*str)
 	return (0);
 }
 
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		split[i] = NULL;
+		i++;
+	}
+	free(split);
+}
+
 int	main(int ac, char **av)
 {
 	char	**numbers;
@@ -89,7 +105,7 @@ int	main(int ac, char **av)
 		check_error = push_swap(numbers, 0);
 		if (check_error)
 			ft_printf("Error\n");
-		free(numbers);
+		free_split(numbers);
 	}
 	else if (ac > 2)
 	{

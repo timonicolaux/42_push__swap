@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:27:58 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 14:17:37 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:56:53 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include "ft_printf/ft_printf.h"
 
@@ -28,6 +27,7 @@ typedef struct s_list
 int		push_swap(char **str, int i);
 int		error_check(char **str, int i);
 int		is_digit_check(char	*str);
+void	free_split(char **split);
 void	algo(t_list **a_lst, t_list **b_lst);
 void	three_numbers(t_list **lst);
 void	four_numbers(t_list **a_lst, t_list **b_lst);
@@ -64,6 +64,7 @@ int		find_closest_in_list2(int num, t_list **lst);
 int		reorder_list_cost(t_list **lst);
 int		check_double_move(int a_index, int b_index, t_list **a_lst,
 			t_list **b_lst);
+void	clear_lst(t_list **lst);
 
 void	swap(t_list **first);
 void	do_sa(t_list **lst);

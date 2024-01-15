@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:17:08 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 14:02:29 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:50:27 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,13 @@ int	check_double_move(int a_index, int b_index, t_list **a_lst, t_list **b_lst)
 	else
 		result = b_moves;
 	return (result);
+}
+
+void	clear_lst(t_list **lst)
+{
+	if (!lst || !(*lst))
+		return ;
+	clear_lst(&(*lst)->next);
+	free(*lst);
+	*lst = NULL;
 }
