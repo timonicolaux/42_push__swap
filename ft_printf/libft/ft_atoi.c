@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:21:24 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/16 11:31:03 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:44:41 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	ft_atoi(const char *nptr)
 		result = result * 10 + (nptr[i] - '0') * sign;
 		i++;
 	}
+	if (nptr[i] != '\0')
+		return (0);
 	if (result < INT_MIN || result > INT_MAX)
 		return (0);
 	return ((int)result);
