@@ -12,7 +12,7 @@ LIBFT = ${LIBFT_PATH}/libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIB)
+$(NAME): $(OBJ) $(LIB) ./libft/*.c
 		cd ${LIBFT_PATH} && make && cp libft.a ../${NAME}
 		ar rcs $(NAME) $(OBJ)
 		ranlib ${NAME}

@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:41:35 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 13:58:18 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:17:58 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	lst_length(t_list **lst)
 
 	if (!lst)
 		return (0);
-	else if (!(*lst)->next)
+	else if (!(*lst) || !(*lst)->next)
 		return (1);
 	i = 0;
 	lst_copy = *lst;

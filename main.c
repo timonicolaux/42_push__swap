@@ -6,7 +6,7 @@
 /*   By: tnicolau <tnicolau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:26:21 by tnicolau          #+#    #+#             */
-/*   Updated: 2024/01/15 15:00:01 by tnicolau         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:32:32 by tnicolau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int	error_check(char **str, int i)
 	{
 		if (is_digit_check(str[i]))
 			return (1);
-		if (ft_atoi(str[i]) >= 2147483647 || ft_atoi(str[i]) <= -2147483648)
+		if ((ft_atoi(str[i]) == 0 && str[i][0] != '0' && str[i][0] != '+'
+		&& str[i][0] != '-') || (ft_atoi(str[i]) == 0 && (str[i][0] == '+'
+		|| str[i][0] == '-') && str[i][1] != '0'))
 			return (1);
 		j = i + 1;
 		while (str[j])
@@ -73,6 +75,8 @@ int	is_digit_check(char	*str)
 			if (!ft_isdigit(str[i + 1]))
 				return (1);
 		}
+		if ((str[i] == '-' || str[i] == '+') && str[i + 1] == '\0')
+			return (1);
 		i++;
 	}
 	return (0);
