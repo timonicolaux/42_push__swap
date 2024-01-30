@@ -1,25 +1,44 @@
-NAME = push_swap
-CC = cc
-LIB = push_swap.h
-FLAGS = -Wall -Wextra -Werror
-SRC = algo_utils.c algo.c cost_calculation.c lst_utils.c lst_utils2.c lst_utils3.c main.c push.c reverse.c rotate.c swap.c turk_algo.c
-OBJ = $(SRC:.c=.o)
+OBJS_DIR	=	.objs
+SRCS_DIR	=	sources
+HEADER_DIR	=	includes
+
+SRC		=	$(SRCS_DIR)/algo_utils.c \
+			$(SRCS_DIR)/algo.c \
+			$(SRCS_DIR)/cost_calculation.c \
+			$(SRCS_DIR)/lst_utils.c \
+			$(SRCS_DIR)/lst_utils2.c \
+			$(SRCS_DIR)/lst_utils3.c \
+			$(SRCS_DIR)/main.c $(SRCS_DIR)/push.c $(SRCS_DIR)/reverse.c $(SRCS_DIR)/rotate.c $(SRCS_DIR)/swap.c $(SRCS_DIR)/turk_algo.c
+
+OBJ		=	$(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRC))
+
+NAME	=	push_swap
+CC		=	cc
+LIB		=	$(HEADER_DIR)/push_swap.h
+FLAGS	=	-Wall -Wextra -Werror -I $(HEADER_DIR) -I $(PRINTF_PATH)
+
 PRINTF_PATH = ./ft_printf
 PRINTF = ${PRINTF_PATH}/libftprintf.a
 
-all: $(NAME)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(LIB)
+	mkdir -p $(@D)
+	$(CC) $(FLAGS) -c $< -o $@
+
+all: lib $(NAME)
+
+lib:
+	make -C $(PRINTF_PATH)
 
 $(NAME): $(OBJ) $(LIB)
-		cd ${PRINTF_PATH} && make && cp libftprintf.a ../
-		$(CC) $(FLAGS) $(SRC) libftprintf.a -o $(NAME)
+	$(CC) $(OBJ) $(FLAGS) $(PRINTF) -o $(NAME)
 
 clean:
-	cd ${PRINTF_PATH} && make clean && cd ..
+	make clean -C $(PRINTF_PATH)
 	rm -f ${OBJ}
 	rm -f libftprintf.a
 
 fclean: clean
-	cd ${PRINTF_PATH} && make fclean && cd ..
+	make fclean -C $(PRINTF_PATH)
 	rm -f ${NAME}
 
 re: fclean all
